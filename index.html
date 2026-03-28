@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,39 +11,42 @@
 
 <body>
 
-<div class="app">
-  <div class="card">
+  <div class="app">
+    <div class="card">
 
-    <div class="topbar">
-      <select id="level">
-        <option value="930478043">HSK 1</option>
-        <option value="133650162">HSK 2</option>
-        <option value="2146196502">HSK 3</option>
-        <option value="703838430">HSK 4</option>
-        <option value="1909625341">HSK 5</option>
-        <option value="297403024">HSK 6</option>
-      </select>
-    </div>
+      <div class="topbar">
+        <select id="level">
+          <option value="930478043">HSK 1</option>
+          <option value="133650162">HSK 2</option>
+          <option value="2146196502">HSK 3</option>
+          <option value="703838430">HSK 4</option>
+          <option value="1909625341">HSK 5</option>
+          <option value="297403024">HSK 6</option>
+        </select>
+      </div>
 
-    <div class="progress">
-      <div class="progress-bar" id="progress"></div>
-    </div>
+      <div class="progress">
+        <div class="progress-bar" id="progress"></div>
+      </div>
 
-    <div class="word" id="word">Loading...</div>
-    <div class="pinyin" id="pinyin"></div>
-    <div class="meaning" id="meaning"></div>
+      <div class="word" id="word">Loading...</div>
+      <div class="pinyin" id="pinyin"></div>
+      <div class="meaning" id="meaning"></div>
 
-    <div class="buttons">
-      <button id="btnMeaning">Nghĩa</button>
-      <button id="btnSpeak">🔊</button>
-      <button id="btnNext">→</button>
+      <div class="buttons">
+        <button id="btnPrev">←</button>
+        <button id="btnMeaning">Nghĩa</button>
+        <button id="btnSpeak">🔊</button>
+        <button id="btnSlow">🐢</button>
+        <button id="btnNext">→</button>
+      </div>
+      
     </div>
 
     <div class="quiz" id="quiz"></div>
-
   </div>
-</div>
 
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
+
 </html>
