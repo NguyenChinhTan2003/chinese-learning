@@ -27,39 +27,61 @@ body {
     max-width: 420px;
 }
 
+/* ===== CARD ===== */
 .card {
     background: rgba(15, 23, 42, 0.8);
     backdrop-filter: blur(20px);
     border-radius: 24px;
     padding: 20px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.4s ease;
 }
 
+/* ===== TEXT ===== */
 .word {
     font-size: 48px;
     font-weight: bold;
     text-align: center;
+    margin-bottom: 8px;
 }
 
 .pinyin {
     color: var(--muted);
     text-align: center;
+    margin-bottom: 6px;
 }
 
 .meaning {
     text-align: center;
-    display: none;
+    color: var(--muted);
+    margin-bottom: 16px;
 }
 
+/* ===== BUTTONS ===== */
 .buttons {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-        margin-top: 20px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    filter: brightness(1.1);
 }
 
 button:active {
-    transform: scale(0.95);
+    transform: scale(0.92);
 }
 
 button:disabled {
@@ -67,39 +89,83 @@ button:disabled {
     cursor: not-allowed;
 }
 
-button {
-    flex: 1;
+/* ===== QUIZ OPTIONS ===== */
+.option {
+    background: #1e293b;
     padding: 12px;
+    margin-top: 10px;
     border-radius: 12px;
-    border: none;
-    background: var(--primary);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option:hover {
+    background: #334155;
+}
+
+.option:active {
+    transform: scale(0.97);
+}
+
+/* đúng / sai */
+.correct {
+    background: #16a34a !important;
     color: white;
 }
 
-.option {
-    background: #1e293b;
-    padding: 10px;
-    margin-top: 8px;
-    border-radius: 10px;
-}
-
-.correct {
-    background: #16a34a;
-}
-
 .wrong {
-    background: #dc2626;
+    background: #dc2626 !important;
+    color: white;
 }
 
+/* ===== PROGRESS ===== */
 .progress {
-    height: 6px;
+    height: 8px;
     background: #1e293b;
-    border-radius: 10px;
-    margin: 10px 0;
+    border-radius: 999px;
+    margin: 12px 0;
+    overflow: hidden;
 }
 
 .progress-bar {
     height: 100%;
     width: 0%;
-    background: var(--primary);
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+    transition: width 0.4s ease;
+}
+
+.chunk-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.chunk-nav button {
+    flex: 1;
+    background: #1e293b;
+}
+
+.chunk-nav span {
+    flex: 2;
+    text-align: center;
+    font-weight: bold;
+}
+
+.card {
+    transition: all 0.3s ease;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
