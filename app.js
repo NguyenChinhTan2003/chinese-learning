@@ -43,7 +43,7 @@ UI.level.onchange = () => loadData(UI.level.value);
 UI.btnPrev.onclick = prevWord;
 UI.btnNext.onclick = nextWord;
 UI.btnSpeak.onclick = () => speak(1);
-UI.btnSlow.onclick = () => speak(0.6);
+UI.btnSlow.onclick = () => speak(0.5);
 
 UI.btnPrevChunk.onclick = () => changeChunk(-1);
 UI.btnNextChunk.onclick = () => changeChunk(1);
@@ -367,25 +367,26 @@ function loadProgress() {
 }
 
 // ===== SPEAK =====
-function speak(rate) {
+function speak(rate = 1) {
     const list =
         state.mode === "quiz" ? state.quiz : state.lesson;
 
     const text = list[state.current]?.word;
     if (!text) return;
 
-    const utter = new SpeechSynthesisUtterance(text);
-    const voice = speechSynthesis
-        .getVoices()
-        .find(v => v.lang.includes("zh"));
+    const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=zh-CN&client=tw-ob`;
 
-    if (voice) utter.voice = voice;
+    const audio = new Audio(url);
 
-    utter.lang = "zh-CN";
-    utter.rate = rate;
-
-    speechSynthesis.cancel();
-    speechSynthesis.speak(utter);
+    audio.playbackRate = rate; // 🔥 KEY
+    audio.play().catch(() => {
+        // fallback (hiếm khi cần)
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = "zh-CN";
+        u.rate = rate;
+        speechSynthesis.cancel();
+        speechSynthesis.speak(u);
+    });
 }
 
 // ===== UTIL =====
